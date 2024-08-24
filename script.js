@@ -1,22 +1,11 @@
-function showPasswordInput() {
-    document.querySelector('.start-container').classList.add('hidden');
-    document.querySelector('.verification-container').classList.remove('hidden');
-    setTimeout(() => {
-        document.querySelector('.verification-container').classList.add('hidden');
-        document.querySelector('.password-container').classList.remove('hidden');
-    }, 5000); // Esperar 5 segundos antes de mostrar a tela de senha
-}
-
-function checkPassword() {
-    const password = document.getElementById('password').value;
-    if (password === "ta tonta") {
-        // Redireciona para o quiz se a senha estiver correta
-        window.location.href = 'quiz.html';
+function nextQuestion(answer) {
+    if (answer === 'errado') {
+        alert("Resposta errada! VocÃª vai ter que comeÃ§ar tudo de novo.");
+        resetQuiz();
     } else {
-        alert("Senha incorreta! Tente novamente.");
+        showNextQuestion();
     }
 }
-
 
 function showNextQuestion() {
     const questions = document.querySelectorAll('.quiz-question');
@@ -28,19 +17,10 @@ function showNextQuestion() {
 
         nextQuestion.classList.remove('hidden');
 
-        if (nextQuestion.querySelector('p').innerText.includes('gostou') ||
-            nextQuestion.querySelector('p').innerText.includes('mereço')) {
-            setTimeout(() => showNextQuestion(), 5000); // Mudar automaticamente após 5s
+        if (nextQuestion.querySelector('p').innerText.includes('gostou') || 
+            nextQuestion.querySelector('p').innerText.includes('mereÃ§o')) {
+            setTimeout(() => showNextQuestion(), 5000); // Mudar automaticamente apÃ³s 5s
         }
-    }
-}
-
-function nextQuestion(answer) {
-    if (answer === 'errado') {
-        alert("Resposta errada! Você vai ter que começar tudo de novo.");
-        resetQuiz();
-    } else {
-        showNextQuestion();
     }
 }
 
@@ -60,5 +40,7 @@ function resetQuiz() {
     document.querySelectorAll('.quiz-question').forEach(question => {
         question.classList.add('hidden');
     });
-    document.querySelector('.quiz-question').classList.remove('hidden'); // Mostrar a primeira pergunta
+    document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+    showNextQuestion(); // Mostrar a primeira pergunta
+    window.scrollTo(0, 0);
 }
