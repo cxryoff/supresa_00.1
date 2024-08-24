@@ -119,4 +119,86 @@
         <p>Você sabe que eu mereço? 😜</p>
         <ul class="quiz-options">
             <li><input type="radio" name="q4" value="sim"> Sim</li>
-            <li><input type="radio
+            <li><input type="radio" name="q4" value="nao"> Não</li>
+        </ul>
+        <button class="submit-button" onclick="nextQuestion('q4')">Próxima</button>
+    </div>
+
+    <div class="quiz-question hidden">
+        <p>Cuzinho hoje? 😏</p>
+        <ul class="quiz-options">
+            <li><input type="radio" name="q5" value="sim"> Sim</li>
+            <li><input type="radio" name="q5" value="nao" disabled> Não</li>
+        </ul>
+        <button class="submit-button" onclick="showResults()">Finalizar</button>
+    </div>
+
+    <!-- Resultado final -->
+    <div id="result" class="hidden">
+        <h2>Resultado</h2>
+        <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 3 horas em pé no metrô!</p>
+        <p><strong>Surpresa!</strong> Que tal sairmos para cinema?</p>
+        <img src="./image.jpeg" alt="Imagem engraçada">
+    </div>
+</div>
+
+<script>
+    function showPasswordInput() {
+        document.querySelector('.start-container').classList.add('hidden');
+        document.querySelector('.password-container').classList.remove('hidden');
+    }
+
+    function checkPassword() {
+        const password = document.getElementById('password').value;
+        if (password === "ta tonta") {
+            document.querySelector('.password-container').classList.add('hidden');
+            document.getElementById('quiz-container').style.display = 'block';
+        } else {
+            alert("Senha incorreta! Tente novamente.");
+        }
+    }
+
+    function nextQuestion(current) {
+        const currentQuestion = document.querySelector(`input[name="${current}"]:checked`);
+        if (currentQuestion) {
+            if (currentQuestion.value === "errado") {
+                alert("Resposta errada! Você vai ter que começar tudo de novo.");
+                resetQuiz();
+            } else {
+                showNextQuestion();
+            }
+        } else {
+            alert("Por favor, selecione uma opção.");
+        }
+    }
+
+    function showNextQuestion() {
+        const questions = document.querySelectorAll('.quiz-question');
+        const currentIndex = Array.from(questions).findIndex(q => !q.classList.contains('hidden'));
+        if (currentIndex >= 0 && currentIndex < questions.length - 1) {
+            questions[currentIndex].classList.add('hidden');
+            questions[currentIndex + 1].classList.remove('hidden');
+        }
+    }
+
+    function resetQuiz() {
+        const questions = document.querySelectorAll('.quiz-question');
+        questions.forEach((q, i) => {
+            if (i === 0) {
+                q.classList.remove('hidden');
+            } else {
+                q.classList.add('hidden');
+            }
+        });
+        document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+    }
+
+    function showResults() {
+        document.getElementById('quiz-container').style.display = 'none';
+        document.getElementById('result').classList.remove('hidden');
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+</body>
+
+</html>
