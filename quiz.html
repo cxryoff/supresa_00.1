@@ -1,16 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link href="styles.css" rel="stylesheet">
+    <script src="script.js"></script>
 </head>
-
 <body>
     <div id="quiz-container" class="quiz-container">
-        <!-- Primeira pergunta -->
+        <!-- Pergunta 1 -->
         <div class="quiz-question">
             <p>Quantos meses que nós nos conhecemos? Lembrando que hoje faz 3 meses que estamos namorando.</p>
             <button class="option-button" onclick="nextQuestion('errado')">8 meses</button>
@@ -19,7 +18,7 @@
             <button class="option-button" onclick="nextQuestion('errado')">7 meses e fé</button>
         </div>
 
-        <!-- Segunda pergunta -->
+        <!-- Pergunta 2 -->
         <div class="quiz-question hidden">
             <p>Qual foi o maior tempo que você já ficou me esperando até hoje?</p>
             <button class="option-button" onclick="nextQuestion('correto')">30 minutos</button>
@@ -49,12 +48,9 @@
         <div id="result" class="hidden">
             <h2>Resultado</h2>
             <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 30 minutos!</p>
-            <p><strong>Surpresa!</strong> Que tal sairmos para cinema?</p>
-            <img src="./image.jpg" alt="Imagem engraçada">
+            <p><strong>Surpresa!</strong> Que tal sairmos para o cinema?</p>
+            <img src="image.jpg" alt="Imagem engraçada">
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
-
 </html>
