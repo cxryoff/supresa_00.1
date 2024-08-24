@@ -21,6 +21,8 @@ function showNextQuestion() {
             nextQuestion.querySelector('p').innerText.includes('mereço')) {
             setTimeout(() => showNextQuestion(), 5000); // Mudar automaticamente após 5s
         }
+    } else {
+        showResults();
     }
 }
 
@@ -40,7 +42,6 @@ function resetQuiz() {
     document.querySelectorAll('.quiz-question').forEach(question => {
         question.classList.add('hidden');
     });
-    document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
     showNextQuestion(); // Mostrar a primeira pergunta
     window.scrollTo(0, 0);
 }
