@@ -116,7 +116,7 @@
     <!-- Resultado final -->
     <div id="result" class="hidden">
         <h2>Resultado</h2>
-        <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 3 horas em pé o metrô, serio eu te amoooo ta tanto karol!</p>
+        <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 30 minutos!</p>
         <p><strong>Surpresa!</strong> Que tal sairmos para cinema?</p>
         <img src="./image.jpg" alt="Imagem engraçada">
     </div>
@@ -133,7 +133,7 @@
         if (password === "ta tonta") {
             document.querySelector('.password-container').classList.add('hidden');
             document.getElementById('quiz-container').classList.remove('hidden');
-            showQuestion(0); // Mostrar a primeira pergunta
+            showNextQuestion(); // Inicia com a primeira pergunta
         } else {
             alert("Senha incorreta! Tente novamente.");
         }
@@ -175,8 +175,7 @@
         document.querySelectorAll('.quiz-question').forEach(question => {
             question.classList.add('hidden');
         });
-        showQuestion(0); // Mostrar a primeira pergunta
-        document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+        document.querySelector('.quiz-question').classList.remove('hidden');
         window.scrollTo(0, 0);
     }
 
