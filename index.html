@@ -73,7 +73,7 @@
 
 <div class="password-container hidden">
     <p>Insira a senha:</p>
-    <input type="password" id="password" placeholder="qual é a senha?">
+    <input type="password" id="password" placeholder="ta tonta?">
     <button class="start-button" onclick="checkPassword()">Confirmar</button>
 </div>
 
@@ -81,19 +81,19 @@
     <!-- Primeira pergunta -->
     <div class="quiz-question">
         <p>Quantos meses que nós nos conhecemos? Lembrando que hoje faz 3 meses que estamos namorando.</p>
-        <button class="option-button" onclick="nextQuestion('errado')">8 meses</button>
-        <button class="option-button" onclick="nextQuestion('errado')">11 meses</button>
-        <button class="option-button" onclick="nextQuestion('correto')">10 meses</button>
-        <button class="option-button" onclick="nextQuestion('errado')">7 meses e fé</button>
+        <button class="option-button" onclick="nextQuestion()">8 meses</button>
+        <button class="option-button" onclick="nextQuestion()">11 meses</button>
+        <button class="option-button" onclick="nextQuestion()">10 meses</button>
+        <button class="option-button" onclick="nextQuestion()">7 meses e fé</button>
     </div>
 
     <!-- Segunda pergunta -->
     <div class="quiz-question hidden">
         <p>Qual foi o maior tempo que você já ficou me esperando até hoje?</p>
-        <button class="option-button" onclick="nextQuestion('correto')">30 minutos</button>
-        <button class="option-button" onclick="nextQuestion('errado')">2 horas</button>
-        <button class="option-button" onclick="nextQuestion('errado')">1 hora</button>
-        <button class="option-button" onclick="nextQuestion('errado')">3 horas em pé no metrô</button>
+        <button class="option-button" onclick="nextQuestion()">30 minutos</button>
+        <button class="option-button" onclick="nextQuestion()">2 horas</button>
+        <button class="option-button" onclick="nextQuestion()">1 hora</button>
+        <button class="option-button" onclick="nextQuestion()">3 horas em pé no metrô</button>
     </div>
 
     <!-- Pergunta Troll 1 -->
@@ -139,13 +139,8 @@
         }
     }
 
-    function nextQuestion(answer) {
-        if (answer === 'errado') {
-            alert("Resposta errada! Você vai ter que começar tudo de novo.");
-            resetQuiz();
-        } else {
-            showNextQuestion();
-        }
+    function nextQuestion() {
+        showNextQuestion();
     }
 
     function showNextQuestion() {
@@ -169,14 +164,6 @@
         const noButton = document.getElementById('no-button');
         noButton.style.top = Math.random() * (window.innerHeight - noButton.offsetHeight) + 'px';
         noButton.style.left = Math.random() * (window.innerWidth - noButton.offsetWidth) + 'px';
-    }
-
-    function resetQuiz() {
-        document.querySelectorAll('.quiz-question').forEach(question => {
-            question.classList.add('hidden');
-        });
-        document.querySelector('.quiz-question').classList.remove('hidden');
-        window.scrollTo(0, 0);
     }
 
     function showResults() {
