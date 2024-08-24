@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="quiz-container" class="quiz-container">
+        <!-- Primeira pergunta -->
+        <div class="quiz-question">
+            <p>Quantos meses que nós nos conhecemos? Lembrando que hoje faz 3 meses que estamos namorando.</p>
+            <button class="option-button" onclick="nextQuestion('errado')">8 meses</button>
+            <button class="option-button" onclick="nextQuestion('errado')">11 meses</button>
+            <button class="option-button" onclick="nextQuestion('correto')">10 meses</button>
+            <button class="option-button" onclick="nextQuestion('errado')">7 meses e fé</button>
+        </div>
+
+        <!-- Segunda pergunta -->
+        <div class="quiz-question hidden">
+            <p>Qual foi o maior tempo que você já ficou me esperando até hoje?</p>
+            <button class="option-button" onclick="nextQuestion('correto')">30 minutos</button>
+            <button class="option-button" onclick="nextQuestion('errado')">2 horas</button>
+            <button class="option-button" onclick="nextQuestion('errado')">1 hora</button>
+            <button class="option-button" onclick="nextQuestion('errado')">3 horas em pé no metrô</button>
+        </div>
+
+        <!-- Pergunta Troll 1 -->
+        <div class="quiz-question hidden">
+            <p>Queria saber se você gostou... 😏 foi dificil fazer isso</p>
+        </div>
+
+        <!-- Pergunta Troll 2 -->
+        <div class="quiz-question hidden">
+            <p>Você sabe que eu mereço né 😜</p>
+        </div>
+
+        <!-- Pergunta Troll 3 -->
+        <div class="quiz-question hidden">
+            <p>Cuzinho hoje? 😏</p>
+            <button class="option-button" onclick="showResults()">Sim</button>
+            <button class="option-button" id="no-button" onclick="avoidNoButton()">Não</button>
+        </div>
+
+        <!-- Resultado final -->
+        <div id="result" class="hidden">
+            <h2>Resultado</h2>
+            <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 30 minutos!</p>
+            <p><strong>Surpresa!</strong> Que tal sairmos para cinema?</p>
+            <img src="./image.jpg" alt="Imagem engraçada">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
