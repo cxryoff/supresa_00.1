@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insira a Senha</title>
+    <title>Senha</title>
     <link href="styles.css" rel="stylesheet">
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === "ta tonta") {
+                window.location.href = 'quiz.html';
+            } else {
+                alert("Senha incorreta! Tente novamente.");
+            }
+        }
+    </script>
 </head>
-
 <body>
     <div class="password-container">
         <p>Insira a senha:</p>
-        <input type="password" id="password" placeholder="Dica: tá na aliança">
-        <button class="start-button" onclick="checkPassword()">Confirmar</button>
+        <input type="password" id="password" placeholder="Dica: EstÃ¡ na alianÃ§a">
+        <button onclick="checkPassword()">Confirmar</button>
     </div>
-    <script src="script.js"></script>
 </body>
-
 </html>
