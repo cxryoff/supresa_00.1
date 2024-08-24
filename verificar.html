@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificar Identidade</title>
+    <title>Verifica√ß√£o</title>
     <link href="styles.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="verification-container">
-        <p>Analisando se È a minha princesa...</p>
-    </div>
     <script>
-        // Redireciona para a tela de senha apÛs 3 segundos
-        setTimeout(() => {
-            window.location.href = 'senha.html';
-        }, 3000);
+        function redirectToPassword() {
+            setTimeout(() => {
+                window.location.href = 'senha.html';
+            }, 3000); // 3 segundos de delay
+        }
     </script>
+</head>
+<body onload="redirectToPassword()">
+    <div class="verification-container">
+        <h1>Analisando se √© a minha princesa...</h1>
+    </div>
 </body>
-
 </html>
