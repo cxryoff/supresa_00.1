@@ -30,7 +30,8 @@
         }
 
         .start-button,
-        .submit-button {
+        .submit-button,
+        .option-button {
             background-color: #2e8b57;
             color: white;
             padding: 10px 20px;
@@ -47,15 +48,6 @@
             color: white;
         }
 
-        .quiz-options {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .quiz-options li {
-            margin-top: 10px;
-        }
-
         .hidden {
             display: none;
         }
@@ -63,6 +55,11 @@
         #result img {
             width: 100%;
             max-width: 300px;
+        }
+
+        #no-button {
+            position: absolute;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -84,61 +81,44 @@
     <!-- Primeira pergunta -->
     <div class="quiz-question">
         <p>Quantos meses que nós nos conhecemos? Lembrando que hoje faz 3 meses que estamos namorando.</p>
-        <ul class="quiz-options">
-            <li><input type="radio" name="q1" value="errado"> 8 meses</li>
-            <li><input type="radio" name="q1" value="errado"> 11 meses</li>
-            <li><input type="radio" name="q1" value="correto"> 10 meses</li>
-            <li><input type="radio" name="q1" value="errado"> 7 meses e fé</li>
-        </ul>
-        <button class="submit-button" onclick="nextQuestion('q1')">Próxima</button>
+        <button class="option-button" onclick="nextQuestion('errado')">8 meses</button>
+        <button class="option-button" onclick="nextQuestion('errado')">11 meses</button>
+        <button class="option-button" onclick="nextQuestion('correto')">10 meses</button>
+        <button class="option-button" onclick="nextQuestion('errado')">7 meses e fé</button>
     </div>
 
     <!-- Segunda pergunta -->
     <div class="quiz-question hidden">
         <p>Qual foi o maior tempo que você já ficou me esperando até hoje?</p>
-        <ul class="quiz-options">
-            <li><input type="radio" name="q2" value="correto"> 3 horas em pé no metrô</li>
-            <li><input type="radio" name="q2" value="errado"> 2 horas</li>
-            <li><input type="radio" name="q2" value="errado"> 1 hora</li>
-            <li><input type="radio" name="q2" value="errado"> 30 minutos 👀</li>
-        </ul>
-        <button class="submit-button" onclick="nextQuestion('q2')">Próxima</button>
+        <button class="option-button" onclick="nextQuestion('correto')">30 minutos</button>
+        <button class="option-button" onclick="nextQuestion('errado')">2 horas</button>
+        <button class="option-button" onclick="nextQuestion('errado')">1 hora</button>
+        <button class="option-button" onclick="nextQuestion('errado')">3 horas em pé no metrô</button>
     </div>
 
-    <!-- Perguntas Troll -->
+    <!-- Pergunta Troll 1 -->
     <div class="quiz-question hidden">
         <p>Queria saber se você gostou? 😏</p>
-        <ul class="quiz-options">
-            <li><input type="radio" name="q3" value="sim"> Sim</li>
-            <li><input type="radio" name="q3" value="nao"> Não</li>
-        </ul>
-        <button class="submit-button" onclick="nextQuestion('q3')">Próxima</button>
     </div>
 
+    <!-- Pergunta Troll 2 -->
     <div class="quiz-question hidden">
         <p>Você sabe que eu mereço? 😜</p>
-        <ul class="quiz-options">
-            <li><input type="radio" name="q4" value="sim"> Sim</li>
-            <li><input type="radio" name="q4" value="nao"> Não</li>
-        </ul>
-        <button class="submit-button" onclick="nextQuestion('q4')">Próxima</button>
     </div>
 
+    <!-- Pergunta Troll 3 -->
     <div class="quiz-question hidden">
         <p>Cuzinho hoje? 😏</p>
-        <ul class="quiz-options">
-            <li><input type="radio" name="q5" value="sim"> Sim</li>
-            <li><input type="radio" name="q5" value="nao" disabled> Não</li>
-        </ul>
-        <button class="submit-button" onclick="showResults()">Finalizar</button>
+        <button class="option-button" onclick="showResults()">Sim</button>
+        <button class="option-button" id="no-button" onclick="avoidNoButton()">Não</button>
     </div>
 
     <!-- Resultado final -->
     <div id="result" class="hidden">
         <h2>Resultado</h2>
-        <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 3 horas em pé no metrô!</p>
+        <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 30 minutos!</p>
         <p><strong>Surpresa!</strong> Que tal sairmos para cinema?</p>
-        <img src="./image.jpeg" alt="Imagem engraçada">
+        <img src="./imagem.jpg" alt="Imagem engraçada">
     </div>
 </div>
 
@@ -152,49 +132,56 @@
         const password = document.getElementById('password').value;
         if (password === "ta tonta") {
             document.querySelector('.password-container').classList.add('hidden');
-            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('quiz-container').classList.remove('hidden');
+            showQuestion(0); // Mostrar a primeira pergunta
         } else {
             alert("Senha incorreta! Tente novamente.");
         }
     }
 
-    function nextQuestion(current) {
-        const currentQuestion = document.querySelector(`input[name="${current}"]:checked`);
-        if (currentQuestion) {
-            if (currentQuestion.value === "errado") {
-                alert("Resposta errada! Você vai ter que começar tudo de novo.");
-                resetQuiz();
-            } else {
-                showNextQuestion();
-            }
+    function nextQuestion(answer) {
+        if (answer === 'errado') {
+            alert("Resposta errada! Você vai ter que começar tudo de novo.");
+            resetQuiz();
         } else {
-            alert("Por favor, selecione uma opção.");
+            showNextQuestion();
         }
     }
 
     function showNextQuestion() {
         const questions = document.querySelectorAll('.quiz-question');
         const currentIndex = Array.from(questions).findIndex(q => !q.classList.contains('hidden'));
+
         if (currentIndex >= 0 && currentIndex < questions.length - 1) {
             questions[currentIndex].classList.add('hidden');
-            questions[currentIndex + 1].classList.remove('hidden');
+            const nextQuestion = questions[currentIndex + 1];
+
+            nextQuestion.classList.remove('hidden');
+
+            if (nextQuestion.querySelector('p').innerText.includes('gostou') || 
+                nextQuestion.querySelector('p').innerText.includes('mereço')) {
+                setTimeout(() => showNextQuestion(), 5000); // Mudar automaticamente após 5s
+            }
         }
     }
 
+    function avoidNoButton() {
+        const noButton = document.getElementById('no-button');
+        noButton.style.top = Math.random() * (window.innerHeight - noButton.offsetHeight) + 'px';
+        noButton.style.left = Math.random() * (window.innerWidth - noButton.offsetWidth) + 'px';
+    }
+
     function resetQuiz() {
-        const questions = document.querySelectorAll('.quiz-question');
-        questions.forEach((q, i) => {
-            if (i === 0) {
-                q.classList.remove('hidden');
-            } else {
-                q.classList.add('hidden');
-            }
+        document.querySelectorAll('.quiz-question').forEach(question => {
+            question.classList.add('hidden');
         });
+        showQuestion(0); // Mostrar a primeira pergunta
         document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+        window.scrollTo(0, 0);
     }
 
     function showResults() {
-        document.getElementById('quiz-container').style.display = 'none';
+        document.getElementById('quiz-container').classList.add('hidden');
         document.getElementById('result').classList.remove('hidden');
         window.scrollTo(0, document.body.scrollHeight);
     }
