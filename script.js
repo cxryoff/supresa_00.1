@@ -1,3 +1,25 @@
+// Função para verificar a senha
+function checkPassword() {
+    const password = document.getElementById('password').value;
+    if (password === "ta tonta") {
+        window.location.href = 'quiz.html'; // Redireciona para o quiz se a senha estiver correta
+    } else {
+        alert("Senha incorreta! Tente novamente.");
+    }
+}
+
+// Evento de carregamento do DOM
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('quiz-container')) {
+        showQuiz();
+    }
+});
+
+function showQuiz() {
+    document.getElementById('quiz-container').classList.remove('hidden');
+    showNextQuestion(); // Inicia com a primeira pergunta
+}
+
 function nextQuestion(answer) {
     if (answer === 'errado') {
         alert("Resposta errada! Você vai ter que começar tudo de novo.");
@@ -17,12 +39,10 @@ function showNextQuestion() {
 
         nextQuestion.classList.remove('hidden');
 
-        if (nextQuestion.querySelector('p').innerText.includes('gostou') || 
+        if (nextQuestion.querySelector('p').innerText.includes('gostou') ||
             nextQuestion.querySelector('p').innerText.includes('mereço')) {
             setTimeout(() => showNextQuestion(), 5000); // Mudar automaticamente após 5s
         }
-    } else {
-        showResults();
     }
 }
 
@@ -33,9 +53,7 @@ function avoidNoButton() {
 }
 
 function showResults() {
-    document.getElementById('quiz-container').classList.add('hidden');
-    document.getElementById('result').classList.remove('hidden');
-    window.scrollTo(0, document.body.scrollHeight);
+    window.location.href = "resultado.html";
 }
 
 function resetQuiz() {
