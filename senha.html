@@ -5,22 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senha</title>
     <link href="styles.css" rel="stylesheet">
-    <script>
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            if (password === "ta tonta") {
-                window.location.href = 'quiz.html';
-            } else {
-                alert("Senha incorreta! Tente novamente.");
-            }
-        }
-    </script>
 </head>
 <body>
     <div class="password-container">
+        <h2>Acesso Restrito</h2>
         <p>Insira a senha:</p>
         <input type="password" id="password" placeholder="Dica: Está na aliança">
         <button onclick="checkPassword()">Confirmar</button>
+        <div id="error-message" class="error-message hidden">
+            Senha incorreta! Tente novamente.
+        </div>
     </div>
+    
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            if (password === "ta tonta") {
+                window.location.href = 'quiz.html';
+            } else {
+                errorMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    errorMessage.classList.add('hidden');
+                }, 3000);
+            }
+        }
+        
+        // Permitir pressionar Enter para confirmar
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
 </body>
 </html>

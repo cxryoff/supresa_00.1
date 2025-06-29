@@ -1,53 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado - Surpresa!</title>
-    <style>
-        body {
-            font-family: Georgia, serif;
-            text-align: center;
-            background-image: url('./fundo.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            margin: 0;
-            padding: 20px;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        img {
-            width: 100%;
-            max-width: 300px;
-            margin-top: 20px;
-        }
-    </style>
+    <link href="styles.css" rel="stylesheet">
 </head>
-
 <body>
-
-    <div class="container">
-        <h2>Resultado</h2>
-        <p>Vamos ser sinceros... o maior tempo que voc� j� me esperou foi 3 horas em p� no metr�!</p>
-        <p><strong>Surpresa!</strong> Que tal sairmos para o cinema?</p>
-        <img src="./imagem.jpg" alt="Imagem engra�ada">
+    <div class="result-container">
+        <div class="result-content">
+            <h1>🎉 Resultado Final! 🎉</h1>
+            
+            <div class="result-text">
+                <p>Vamos ser sinceros... o maior tempo que você já me esperou foi <strong>30 minutos</strong>!</p>
+                <p class="surprise"><strong>🎬 Surpresa!</strong> Que tal sairmos para o cinema?</p>
+            </div>
+            
+            <div class="result-image">
+                <img src="./image.jpg" alt="Imagem especial" onerror="this.style.display='none'">
+            </div>
+            
+            <div class="result-actions">
+                <button class="action-button" onclick="window.location.href='quiz.html'">
+                    🔄 Fazer Quiz Novamente
+                </button>
+                <button class="action-button primary" onclick="alert('Te amo! ❤️')">
+                    ❤️ Aceitar Convite
+                </button>
+            </div>
+        </div>
     </div>
-
 </body>
-
 </html>

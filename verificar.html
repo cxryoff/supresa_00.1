@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação</title>
     <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="verification-container">
+        <h1>Analisando se é a minha princesa...</h1>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+    
     <script>
         function redirectToPassword() {
             setTimeout(() => {
                 window.location.href = 'senha.html';
-            }, 3000); // 3 segundos de delay
+            }, 3000);
         }
+        
+        // Iniciar redirecionamento quando a página carregar
+        window.addEventListener('load', redirectToPassword);
     </script>
-</head>
-<body onload="redirectToPassword()">
-    <div class="verification-container">
-        <h1>Analisando se é a minha princesa...</h1>
-    </div>
 </body>
 </html>

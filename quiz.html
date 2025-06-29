@@ -3,53 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Quiz Especial</title>
     <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
 <body>
     <div id="quiz-container" class="quiz-container">
+        <div class="quiz-header">
+            <h1>Quiz da Princesa</h1>
+            <div class="progress-bar">
+                <div id="progress" class="progress-fill"></div>
+            </div>
+        </div>
+
         <!-- Pergunta 1 -->
-        <div class="quiz-question">
+        <div class="quiz-question active" data-question="1">
+            <h3>Pergunta 1</h3>
             <p>Quantos meses que nós nos conhecemos? Lembrando que hoje faz 3 meses que estamos namorando.</p>
-            <button class="option-button" onclick="nextQuestion('errado')">8 meses</button>
-            <button class="option-button" onclick="nextQuestion('errado')">11 meses</button>
-            <button class="option-button" onclick="nextQuestion('correto')">10 meses</button>
-            <button class="option-button" onclick="nextQuestion('errado')">7 meses e fé</button>
+            <div class="options">
+                <button class="option-button" onclick="selectAnswer(this, false)">8 meses</button>
+                <button class="option-button" onclick="selectAnswer(this, false)">11 meses</button>
+                <button class="option-button" onclick="selectAnswer(this, true)">10 meses</button>
+                <button class="option-button" onclick="selectAnswer(this, false)">7 meses e fé</button>
+            </div>
         </div>
 
         <!-- Pergunta 2 -->
-        <div class="quiz-question hidden">
+        <div class="quiz-question" data-question="2">
+            <h3>Pergunta 2</h3>
             <p>Qual foi o maior tempo que você já ficou me esperando até hoje?</p>
-            <button class="option-button" onclick="nextQuestion('correto')">30 minutos</button>
-            <button class="option-button" onclick="nextQuestion('errado')">2 horas</button>
-            <button class="option-button" onclick="nextQuestion('errado')">1 hora</button>
-            <button class="option-button" onclick="nextQuestion('errado')">3 horas em pé no metrô</button>
+            <div class="options">
+                <button class="option-button" onclick="selectAnswer(this, true)">30 minutos</button>
+                <button class="option-button" onclick="selectAnswer(this, false)">2 horas</button>
+                <button class="option-button" onclick="selectAnswer(this, false)">1 hora</button>
+                <button class="option-button" onclick="selectAnswer(this, false)">3 horas em pé no metrô</button>
+            </div>
         </div>
 
         <!-- Pergunta Troll 1 -->
-        <div class="quiz-question hidden">
-            <p>Queria saber se você gostou... 😏 foi dificil fazer isso</p>
+        <div class="quiz-question troll-question" data-question="3">
+            <h3>😊</h3>
+            <p>Queria saber se você gostou... 😏 foi difícil fazer isso</p>
+            <div class="auto-continue">
+                <span>Continuando automaticamente...</span>
+            </div>
         </div>
 
         <!-- Pergunta Troll 2 -->
-        <div class="quiz-question hidden">
+        <div class="quiz-question troll-question" data-question="4">
+            <h3>😜</h3>
             <p>Você sabe que eu mereço né 😜</p>
+            <div class="auto-continue">
+                <span>Continuando automaticamente...</span>
+            </div>
         </div>
 
-        <!-- Pergunta Troll 3 -->
-        <div class="quiz-question hidden">
+        <!-- Pergunta Final -->
+        <div class="quiz-question final-question" data-question="5">
+            <h3>Pergunta Final 😏</h3>
             <p>Cuzinho hoje? 😏</p>
-            <button class="option-button" onclick="showResults()">Sim</button>
-            <button class="option-button" id="no-button" onclick="avoidNoButton()">Não</button>
-        </div>
-
-        <!-- Resultado final -->
-        <div id="result" class="hidden">
-            <h2>Resultado</h2>
-            <p>Vamos ser sinceros... o maior tempo que você já me esperou foi 30 minutos!</p>
-            <p><strong>Surpresa!</strong> Que tal sairmos para o cinema?</p>
-            <img src="image.jpg" alt="Imagem engraçada">
+            <div class="options">
+                <button class="option-button yes-button" onclick="showResults()">Sim ❤️</button>
+                <button class="option-button no-button" id="no-button" onclick="avoidNoButton()">Não</button>
+            </div>
         </div>
     </div>
 </body>
