@@ -21,14 +21,25 @@
             </div>
             
             <div class="result-actions">
+                <button class="action-button primary" onclick="goToFinal()">
+                    ✨ Continuar
+                </button>
                 <button class="action-button" onclick="window.location.href='quiz.html'">
                     🔄 Fazer Quiz Novamente
-                </button>
-                <button class="action-button primary" onclick="alert('Te amo! ❤️')">
-                    ❤️ Aceitar Convite
                 </button>
             </div>
         </div>
     </div>
+    
+    <script>
+        function goToFinal() {
+            // Adicionar efeito de transição
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = "final.html";
+            }, 500);
+        }
+    </script>
 </body>
 </html>

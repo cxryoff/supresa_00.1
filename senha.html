@@ -15,16 +15,27 @@
         <div id="error-message" class="error-message hidden">
             Senha incorreta! Tente novamente.
         </div>
+        <div id="success-message" class="success-message hidden">
+            ✅ Acesso liberado! Você é mesmo a minha princesa! ❤️
+        </div>
     </div>
     
     <script>
         function checkPassword() {
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
             
             if (password === "ta tonta") {
-                window.location.href = 'quiz.html';
+                errorMessage.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                
+                // Redirecionar para o quiz após 2 segundos
+                setTimeout(() => {
+                    window.location.href = 'quiz.html';
+                }, 2000);
             } else {
+                successMessage.classList.add('hidden');
                 errorMessage.classList.remove('hidden');
                 setTimeout(() => {
                     errorMessage.classList.add('hidden');
