@@ -9,11 +9,11 @@ app.use(express.static(__dirname));
 
 // Handle routes for your HTML files
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'verificar.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/verificar', (req, res) => {
-  res.sendFile(path.join(__dirname, 'verificar.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/senha', (req, res) => {
